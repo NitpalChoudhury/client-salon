@@ -1,26 +1,138 @@
 @import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-playfair: 'Playfair Display', serif;
+  --font-poppins: 'Poppins', sans-serif;
 }
 
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+/* --------------  
+   LUXURY SALON THEME  
+   -------------- */
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+
+  /* Gold Accent */
+  --gold: #d4af37;
+  --gold-soft: #c7a233;
+
+  /* Premium Shadow */
+  --shadow-glow: 0px 0px 30px rgba(212, 175, 55, 0.25);
+
+  /* Smooth UI */
+  --radius: 14px;
+}
+
+/* ------------------------------------
+   Tailwind Theme Extension Variables
+   ------------------------------------ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* -------------------------
+   DARK MODE DEFAULT
+   ------------------------- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
   }
 }
 
+/* --------------  
+   GLOBAL BODY  
+   -------------- */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+  transition: background 0.4s ease, color 0.4s ease;
 }
+
+/* -------------------------
+   Gold Text Selection
+   ------------------------- */
+::selection {
+  background: var(--gold);
+  color: black;
+}
+
+/* -------------------------
+   Scrollbar Premium Style
+   ------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-soft);
+}
+
+/* -------------------------
+   Luxury Shadows
+   ------------------------- */
+.shadow-gold {
+  box-shadow: var(--shadow-glow);
+}
+
+/* -------------------------
+   Smooth Hover Gold Glow
+   ------------------------- */
+.hover-gold:hover {
+  color: var(--gold);
+  transition: 0.3s ease;
+}
+
+/* -------------------------
+   Rounded Luxury Cards
+   ------------------------- */
+.card-luxury {
+  background: linear-gradient(145deg, #0a0a0a, #111111);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0px 0px 25px rgba(212, 175, 55, 0.15);
+}
+
+@keyframes marqueeLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marqueeLeft linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marqueeRight linear infinite;
+}
+
